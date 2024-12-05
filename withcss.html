@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <center>
+    <h1 id="heading">Basic Registration Form</h1>
+    <form  onsubmit="handleSubmit(event)">
+      <!-- Text Input -->
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" onkeypress="press()" required><br>
+
+      <!-- Email Input -->
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" onfocus="highlightField()" required><br>
+
+      <!-- Password Input //👁️🙈-->
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Create a password" required>
+      <span class="eye-icon" id="togglePassword" onclick="showpassword()">👁️</span><br>
+
+      <!-- Radio Buttons -->
+      <label>Gender:</label>
+      <input type="radio" id="male" name="gender" value="male" required>
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female" required>
+      <label for="female">Female</label><br>
+
+      <!-- Dropdown Menu -->
+      <label for="country">Country:</label><br>
+      <select id="country" name="country" required>
+        <option value="">Select your country</option>
+        <option value="india">India</option>
+        <option value="usa">USA</option>
+        <option value="uk">UK</option>
+      </select><br>
+
+      <!-- Checkbox -->
+      <label for="terms">
+        <input type="checkbox" id="terms" name="terms" required>
+       <a href="conditions.txt">I agree to the terms and conditions.</a>
+      </label><br>
+
+      <!-- Submit Button -->
+      <button type="submit" id="button">Submit</button>
+    </form>
+  </center>
+
+  <script>
+
+    function showpassword() {
+      const passwordfield = document.getElementById('password');
+      const toggleicon = document.getElementById('togglePassword');
+      if (passwordfield.type === 'password') {
+        passwordfield.type = 'text';
+        toggleicon.textContent = '🙈'; //(hide)
+      } else {
+        passwordfield.type = 'password';
+        toggleicon.textContent = '👁️'; // (show)
+      }
+    }
+    document.getElementById('togglePassword').onclick = showpassword;
+
+    const button=document.getElementById('button');
+    button.addEventListener('mouseover',()=>{
+      button.style.backgroundColor="red";
+      button.textContent="click me";
+    });
+    button.addEventListener('mouseout',()=>{
+      button.style.backgroundColor="";
+      button.textContent="Submit";
+    });
+
+ name.addEventListener('keypress',()=>{
+  name.style.border="2px solid Green";});
+    
+  function press(){
+    alert("Use Capital letters only .");
+  }
+
+  // Highlight form fields on focus
+  function highlightField() {
+    emailInput=document.getElementById('email');
+  emailInput.style.color="red";
+    }
+
+    // Handle form submission
+    function handleSubmit(event) {
+      event.preventDefault(); // Prevent form submission
+      alert('Form Submitted Successfully!');
+    }
+
+    // Detect window resize
+    window.addEventListener('resize', () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      alert(`Window resized to: ${width} x ${height}`);
+      //console.log(`Window resized to: ${width} x ${height}`);
+    });
+
+    // Detect when the window is scrolled
+    window.addEventListener('scroll', () => {
+      console.log(`Page scrolled to: ${window.scrollY}px`);
+    });
+  </script>
+</body>
+</html>
